@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Dent.Data.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <body class="images-layout"></body>
+}
+else
+{
+    <body class="images-layout"></body>  
+}

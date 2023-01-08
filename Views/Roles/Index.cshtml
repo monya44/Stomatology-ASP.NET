@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IEnumerable<IdentityRole>
+    <h1>Create New Roles</h1>
+    <br />
+    <form method="post" asp-action="addrole" asp-controller="roles">
+        <div class="input-group">
+            <input name="roleName" class="form-control w-25">
+            <span class="input-group-btn">
+                <button class="btn btn-info">Add New Role</button>
+            </span>
+        </div>
+    </form>
+    <table class="table table-striped" id="roleTable">
+        <thead>
+            <tr>
+                <th>
+                    Role
+                </th>
+                <th>
+                    Id
+                </th>
+
+                <th style="width:10%">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>
+                        @role.Name
+                    </td>
+                    <td>
+                        @role.Id
+                    </td>
+                    <td class="text-right">
+                        <div class="dropdown">
+                            <button class="btn btn-info dropdown-toggle" type="button" id="dropButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Edit
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropButton1">
+                            <li><a class="dropdown-item" asp-controller="roles" asp-action="Index" asp-route-userId="@role.Id">Update</a></li>
+                            <li><a asp-action="Delete" class="dropdown-item" asp-route-id="@role.Id" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a></li>
+                        </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

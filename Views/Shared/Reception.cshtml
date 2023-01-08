@@ -1,0 +1,101 @@
+﻿@using Dent.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@model Dent.Data.Identity.Form
+@{
+    ViewData["Title"] = "Dentist Booking form";
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+<h4 style="padding: 0px 20px 10px 0px">Dentist Booking form</h4>
+<fieldset style="border:3.5px solid; padding:50px 50px 50px 50px;">
+    <div class="reception">
+    <form asp-action="Reception" asp-controller="Reception">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="form-group" style="text-align:center;margin-block:10px;">
+                <label asp-for="ChoseProcedure"></label><span>:</span>
+                <input style="margin-left: 24px;" list="procedure" asp-for="ChoseProcedure" placeholder="Chose a procedure"  />
+                <datalist id="procedure">
+                <option value="Procedure A"></option>
+                <option value="Procedure B"></option>
+                <option value="Procedure C"></option>
+                <option value="Procedure D"></option>
+                </datalist>   
+                <span asp-validation-for="ChoseProcedure" class="text-danger"></span>
+                <span class="help-choseprocedure" data-toggle="tooltip" data-placement="left" title="A help text here about choseprocedure">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <label asp-for="ChoseDoctor"></label><span>:</span>
+                <input style="margin-left: 44px;" asp-for="ChoseDoctor" list="doctor" placeholder="Chose a doctor"/>
+                <datalist id="doctor">
+                <option value="Doctor A"></option>
+                <option value="Doctor B"></option>
+                <option value="Doctor C"></option>
+                <option value="Doctor D"></option>
+                </datalist>    
+                <span asp-validation-for="ChoseDoctor" class="text-danger"></span>
+                <span class="help-chosedoctor" data-toggle="tooltip" data-placement="left" title="A help text here about chosedoctor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <label asp-for="CheckDoctor"></label><span>:</span>
+                <input style="margin-left: 45px;" asp-for="CheckDoctor" />
+                <span asp-validation-for="CheckDoctor" class="text-danger"></span>
+                <span class="help-checkdoctor" data-toggle="tooltip" data-placement="left" title="A help text here about checkdoctor">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-question-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg></span>
+            </div>
+            <hr />
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <label >Your Name:</label>
+                <input style="margin-left:37px;" asp-for="Name"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <label asp-for="PhoneNumber"></label><span>:</span>
+                <input style="margin-left:20px" asp-for="PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <label>Your Email:</label>
+                <input style="margin-left:39px" asp-for="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <textarea style="width: 20%;height: 100px;resize: none;" asp-for="Comments" id="comment" placeholder="Some comments here"> </textarea> 
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="text-align:center; margin-block:10px;">
+                <input style="margin-left:40px;" type="submit" value="Book Now!" class="btn btn-primary"/>
+            </div>
+        </div>
+    </form>
+    </div>
+</fieldset>
+}
+else
+{
+    <body class="images-layout">
+    <span>Not Logged In</span>
+    </body>  
+}
+<script>
+$('.help-choseprocedure').tooltip();
+$('.help-chosedoctor').tooltip();
+$('.help-checkdoctor').tooltip();
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
